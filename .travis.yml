@@ -1,0 +1,15 @@
+language: minimal
+
+env:
+  global:
+    # DOCKER_USERNAME / DOCKER_PASSWORD
+    secure: Qo5gMGVM2CmIu9+pAivoBhKqy8/cKHhejO+SYs2Qcbht5kN35+UUxNxOkbr0hfqZ+jxeVskarQ+nzL71OZLt+Hsswxg7No5clsnrByITstiK6LAfca1wjGNEKiRz5m05ugx4lT+5qLjQ/aSG7olup6bQ+yVUKWe78uu9zLCXS7INAwk7Tf2KlvPG4NT6hmeeLm7Sy2Iy50lRERPdxNc/6jKmI8RkzBJ50MfaNxIlGufvHqfxJ1pP634IFbp9zg1AHDocps2zJum4kD8VVyyL+fBV5cGxk97txG+5AzGg99t5FT1jLxsC/g2wS1hKCrt/HfHoYZaWSQ1UtyIlGIj9GbAiHJMzxLqS1X8DLpYmrtMgEsQH4kpHKCkVq76nIp24pvVeMXvCCPCPxGZGGkVWOHb2EZ5idTg+YtgcW3D3Rt8crwPsK9oro8Tqivt+VRIYS7JxRgXX1gAASUabovmFNl7lWAWKMz2Xh+hPONq9Jj55fkPx+/KIEBKUem4fD7ENi5d5/x8do0jJHGSo8tOk5EG2Cmq1f+mH15qQfzK8yVWf6QseiQraIUhGfzxquMr0sQ6vr+3Lfl4mvESIsThefvjiVfNWFcmC8XXAqnYNsBJRFYy8aFd5bRf0hUHXsusam1bW25vi0JVY5cPO18t/VFLJuOjnCzuqtpetyjJjOKo=
+
+script: make -f sys11.make build-image
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: make -f sys11.make push-image
+  on:
+    tags: true
